@@ -11,10 +11,10 @@ import CoreData
 
 class MainGoalsViewController: UITableViewController, NewGoalViewControllerDelegate {
     
-    var managedContext: NSManagedObjectContext
+    let rowHeight: CGFloat = 75
+    var managedContext: NSManagedObjectContext!
     var goalItems: [GoalItem]? = []
     var checkedItems: Int?
-    let rowHeight: CGFloat = 75
 
     
     
