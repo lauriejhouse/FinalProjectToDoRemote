@@ -8,13 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		8CD0C418215522A300967947 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD0C417215522A300967947 /* AppDelegate.swift */; };
-		8CD0C41A215522A300967947 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD0C419215522A300967947 /* ViewController.swift */; };
+		8CD0C41A215522A300967947 /* MainGoalsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD0C419215522A300967947 /* MainGoalsViewController.swift */; };
 		8CD0C41D215522A300967947 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CD0C41B215522A300967947 /* Main.storyboard */; };
 		8CD0C420215522A300967947 /* FinalProjectDone.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8CD0C41E215522A300967947 /* FinalProjectDone.xcdatamodeld */; };
 		8CD0C422215522A400967947 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CD0C421215522A400967947 /* Assets.xcassets */; };
 		8CD0C425215522A400967947 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CD0C423215522A400967947 /* LaunchScreen.storyboard */; };
 		8CD0C430215522A500967947 /* FinalProjectDoneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD0C42F215522A500967947 /* FinalProjectDoneTests.swift */; };
 		8CD0C43B215522A500967947 /* FinalProjectDoneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD0C43A215522A500967947 /* FinalProjectDoneUITests.swift */; };
+		8CD0C4492155331700967947 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD0C4482155331700967947 /* TaskViewController.swift */; };
+		8CD0C44B2155342A00967947 /* NewGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD0C44A2155342A00967947 /* NewGoalViewController.swift */; };
+		8CD0C44D21553C1400967947 /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD0C44C21553C1400967947 /* NewTaskViewController.swift */; };
+		8CD0C44F21553F5F00967947 /* IconPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD0C44E21553F5F00967947 /* IconPickerViewController.swift */; };
+		8CD0C454215543A200967947 /* GoalItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD0C450215543A200967947 /* GoalItem+CoreDataClass.swift */; };
+		8CD0C455215543A200967947 /* GoalItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD0C451215543A200967947 /* GoalItem+CoreDataProperties.swift */; };
+		8CD0C456215543A200967947 /* TaskItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD0C452215543A200967947 /* TaskItem+CoreDataClass.swift */; };
+		8CD0C457215543A200967947 /* TaskItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD0C453215543A200967947 /* TaskItem+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +45,7 @@
 /* Begin PBXFileReference section */
 		8CD0C414215522A300967947 /* FinalProjectDone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalProjectDone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CD0C417215522A300967947 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8CD0C419215522A300967947 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8CD0C419215522A300967947 /* MainGoalsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGoalsViewController.swift; sourceTree = "<group>"; };
 		8CD0C41C215522A300967947 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8CD0C41F215522A300967947 /* FinalProjectDone.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FinalProjectDone.xcdatamodel; sourceTree = "<group>"; };
 		8CD0C421215522A400967947 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +57,14 @@
 		8CD0C436215522A500967947 /* FinalProjectDoneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FinalProjectDoneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CD0C43A215522A500967947 /* FinalProjectDoneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalProjectDoneUITests.swift; sourceTree = "<group>"; };
 		8CD0C43C215522A500967947 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8CD0C4482155331700967947 /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
+		8CD0C44A2155342A00967947 /* NewGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGoalViewController.swift; sourceTree = "<group>"; };
+		8CD0C44C21553C1400967947 /* NewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
+		8CD0C44E21553F5F00967947 /* IconPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconPickerViewController.swift; sourceTree = "<group>"; };
+		8CD0C450215543A200967947 /* GoalItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GoalItem+CoreDataClass.swift"; sourceTree = "<group>"; };
+		8CD0C451215543A200967947 /* GoalItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GoalItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		8CD0C452215543A200967947 /* TaskItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskItem+CoreDataClass.swift"; sourceTree = "<group>"; };
+		8CD0C453215543A200967947 /* TaskItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +95,10 @@
 		8CD0C40B215522A300967947 = {
 			isa = PBXGroup;
 			children = (
+				8CD0C450215543A200967947 /* GoalItem+CoreDataClass.swift */,
+				8CD0C451215543A200967947 /* GoalItem+CoreDataProperties.swift */,
+				8CD0C452215543A200967947 /* TaskItem+CoreDataClass.swift */,
+				8CD0C453215543A200967947 /* TaskItem+CoreDataProperties.swift */,
 				8CD0C416215522A300967947 /* FinalProjectDone */,
 				8CD0C42E215522A500967947 /* FinalProjectDoneTests */,
 				8CD0C439215522A500967947 /* FinalProjectDoneUITests */,
@@ -99,9 +119,13 @@
 		8CD0C416215522A300967947 /* FinalProjectDone */ = {
 			isa = PBXGroup;
 			children = (
-				8CD0C417215522A300967947 /* AppDelegate.swift */,
-				8CD0C419215522A300967947 /* ViewController.swift */,
 				8CD0C41B215522A300967947 /* Main.storyboard */,
+				8CD0C417215522A300967947 /* AppDelegate.swift */,
+				8CD0C419215522A300967947 /* MainGoalsViewController.swift */,
+				8CD0C44A2155342A00967947 /* NewGoalViewController.swift */,
+				8CD0C4482155331700967947 /* TaskViewController.swift */,
+				8CD0C44C21553C1400967947 /* NewTaskViewController.swift */,
+				8CD0C44E21553F5F00967947 /* IconPickerViewController.swift */,
 				8CD0C421215522A400967947 /* Assets.xcassets */,
 				8CD0C423215522A400967947 /* LaunchScreen.storyboard */,
 				8CD0C426215522A400967947 /* Info.plist */,
@@ -259,9 +283,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8CD0C41A215522A300967947 /* ViewController.swift in Sources */,
+				8CD0C41A215522A300967947 /* MainGoalsViewController.swift in Sources */,
+				8CD0C4492155331700967947 /* TaskViewController.swift in Sources */,
+				8CD0C457215543A200967947 /* TaskItem+CoreDataProperties.swift in Sources */,
+				8CD0C455215543A200967947 /* GoalItem+CoreDataProperties.swift in Sources */,
 				8CD0C420215522A300967947 /* FinalProjectDone.xcdatamodeld in Sources */,
 				8CD0C418215522A300967947 /* AppDelegate.swift in Sources */,
+				8CD0C44F21553F5F00967947 /* IconPickerViewController.swift in Sources */,
+				8CD0C454215543A200967947 /* GoalItem+CoreDataClass.swift in Sources */,
+				8CD0C44D21553C1400967947 /* NewTaskViewController.swift in Sources */,
+				8CD0C44B2155342A00967947 /* NewGoalViewController.swift in Sources */,
+				8CD0C456215543A200967947 /* TaskItem+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
