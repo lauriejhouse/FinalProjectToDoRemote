@@ -12,5 +12,8 @@ import CoreData
 
 @objc(GoalItem)
 public class GoalItem: NSManagedObject {
+    deinit {
+        print("DEINITIALISED")
+}
 
 }

@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 import CoreData
 
-class TaskViewController: UITableViewController {
+class TaskViewController: UITableViewController, NewTaskViewControllerDelegate {
     
     var goalItem: GoalItem?
     var managedContext: NSManagedObjectContext!
@@ -135,7 +135,7 @@ class TaskViewController: UITableViewController {
         if segue.identifier == "AddTask" {
             let nav = segue.destination as! UINavigationController
             let newTaskVc = nav.topViewController as! NewTaskViewController
-            newTaskVc.delegate = (self as! NewTaskViewControllerDelegate)
+            newTaskVc.delegate = self
             newTaskVc.managedContext = managedContext
         }
     }

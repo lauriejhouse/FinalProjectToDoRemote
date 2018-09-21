@@ -7,15 +7,22 @@
 //
 
 import UIKit
+import Foundation
 import CoreData
 
 class MainGoalsViewController: UITableViewController, NewGoalViewControllerDelegate {
+    
+    // MARK: - Properties
     
     let rowHeight: CGFloat = 75
     var managedContext: NSManagedObjectContext!
     var goalItems: [GoalItem]? = []
     var checkedItems: Int?
-
+    
+    @IBOutlet weak var taskButton: UIButton!
+    
+    
+    
     
     
     // MARK: - BPs
@@ -256,6 +263,7 @@ class MainGoalsViewController: UITableViewController, NewGoalViewControllerDeleg
             self.performSegue(withIdentifier: "ShowGoal", sender: initialIndexPath)
             tableView.deselectRow(at: initialIndexPath, animated: true)
         }
+    }
 }
 
-}
+
