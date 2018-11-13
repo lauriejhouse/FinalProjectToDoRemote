@@ -51,7 +51,7 @@ class MainGoalsViewController: UITableViewController, NewGoalViewControllerDeleg
         if let goalItems = goalItems {
             return goalItems.count
         }
-        return 0
+        return 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -78,7 +78,7 @@ class MainGoalsViewController: UITableViewController, NewGoalViewControllerDeleg
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete  {
             let ac = UIAlertController(title: "Delete?", message: "This will remove your goal as well as any of its tasks.", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -199,28 +199,28 @@ class MainGoalsViewController: UITableViewController, NewGoalViewControllerDeleg
     // MARK: - Custom Methods
     
     func configure(_ cell: UITableViewCell, with goal: GoalItem) {
-        let textLabel = cell.viewWithTag(1000) as! UILabel
-        let icon = cell.viewWithTag(10) as! UIImageView
-        let tasksDoneLabel = cell.viewWithTag(5000) as! UILabel
+        let textLabel = cell.viewWithTag(1000) as? UILabel
+        let icon = cell.viewWithTag(10) as? UIImageView
+        let tasksDoneLabel = cell.viewWithTag(5000) as? UILabel
         guard let tasksCount = goal.tasks?.count else { return }
         
         fetchCheckedItems(with: goal)
         
         if let checkedItems = checkedItems {
             if tasksCount == 0 {
-                tasksDoneLabel.text = "Select Goal To Add New Tasks!"
+                tasksDoneLabel?.text = "Select Goal To Add New Tasks!"
             } else if checkedItems == 0 {
-                tasksDoneLabel.text = "Get Started! \(tasksCount) To Go!"
+                tasksDoneLabel?.text = "Get Started! \(tasksCount) To Go!"
             } else if checkedItems == tasksCount {
-                tasksDoneLabel.text = "All Tasks Completed!"
+                tasksDoneLabel?.text = "All Tasks Completed!"
             } else {
-                tasksDoneLabel.text = "\(checkedItems) / \(tasksCount) Completed"
+                tasksDoneLabel?.text = "\(checkedItems) / \(tasksCount) Completed"
             }
         }
         
         
-        textLabel.text = goal.text!
-        icon.image = UIImage(named: goal.iconName!)
+        textLabel?.text = goal.text!
+        icon?.image = UIImage(named: goal.iconName!)
     }
     
     func save() {
@@ -259,7 +259,7 @@ class MainGoalsViewController: UITableViewController, NewGoalViewControllerDeleg
     func selectNewGoal() {
         let initialIndexPath = IndexPath(row: 0, section: 0)
         if UIDevice.current.userInterfaceIdiom == .pad  {
-            tableView.selectRow(at: initialIndexPath, animated: true, scrollPosition:UITableViewScrollPosition.none)
+            tableView.selectRow(at: initialIndexPath, animated: true, scrollPosition:UITableView.ScrollPosition.none)
             self.performSegue(withIdentifier: "ShowGoal", sender: initialIndexPath)
             tableView.deselectRow(at: initialIndexPath, animated: true)
         }

@@ -24,13 +24,24 @@ class FinalProjectDoneUITests: XCTestCase {
     }
     
     override func tearDown() {
+        
+        
+        
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
     
     func testExample() {
+        
+        
+        let app = XCUIApplication()
+        app.navigationBars["Long Term Goal"].buttons["Add"].tap()
+        app.navigationBars["Add Long Term Goal"].buttons["Done"].tap()
+        
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     
+    
 }
+

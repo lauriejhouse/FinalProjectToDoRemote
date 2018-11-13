@@ -23,6 +23,7 @@ class NewTaskViewController: UITableViewController, UITextFieldDelegate {
     weak var delegate: NewTaskViewControllerDelegate?
     @IBOutlet weak var textField: UITextField!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -32,7 +33,7 @@ class NewTaskViewController: UITableViewController, UITextFieldDelegate {
         textField.becomeFirstResponder()
     }
     
-    
+
     
     
     

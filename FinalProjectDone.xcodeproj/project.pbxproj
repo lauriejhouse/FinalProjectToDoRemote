@@ -220,13 +220,16 @@
 				TargetAttributes = {
 					8CD0C413215522A300967947 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 					};
 					8CD0C42A215522A500967947 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 						TestTargetID = 8CD0C413215522A300967947;
 					};
 					8CD0C435215522A500967947 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 						TestTargetID = 8CD0C413215522A300967947;
 					};
 				};
@@ -475,7 +478,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Jackie.FinalProjectDone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -493,7 +496,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Jackie.FinalProjectDone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -513,7 +516,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Jackie.FinalProjectDoneTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FinalProjectDone.app/FinalProjectDone";
 			};
@@ -534,7 +537,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Jackie.FinalProjectDoneTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FinalProjectDone.app/FinalProjectDone";
 			};
@@ -554,7 +557,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Jackie.FinalProjectDoneUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = FinalProjectDone;
 			};
@@ -574,7 +577,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Jackie.FinalProjectDoneUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = FinalProjectDone;
 			};

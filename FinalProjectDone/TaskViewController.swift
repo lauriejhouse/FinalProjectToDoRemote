@@ -12,9 +12,12 @@ import CoreData
 
 class TaskViewController: UITableViewController, NewTaskViewControllerDelegate {
     
+    // MARK: - Properties
+    
     var goalItem: GoalItem?
     var managedContext: NSManagedObjectContext!
-
+    
+    
     // MARK: - Table View Data Source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -54,7 +57,7 @@ class TaskViewController: UITableViewController, NewTaskViewControllerDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         guard let taskToDelete = self.goalItem?.tasks?[indexPath.row] as? TaskItem else { return }
         self.managedContext.delete(taskToDelete)
         self.save()
@@ -72,12 +75,12 @@ class TaskViewController: UITableViewController, NewTaskViewControllerDelegate {
     
     func configureCheckmark(for cell: UITableViewCell, with task: TaskItem) {
         
-        let imageView = cell.viewWithTag(3000) as! UIImageView
+        let imageView = cell.viewWithTag(3000) as? UIImageView
         
         if task.isChecked != true {
-            imageView.image = #imageLiteral(resourceName: "No Icon")
+            imageView?.image = #imageLiteral(resourceName: "No Icon")
         } else {
-            imageView.image = #imageLiteral(resourceName: "checked-3")
+            imageView?.image = #imageLiteral(resourceName: "checked-3")
         }
     }
     
@@ -140,4 +143,3 @@ class TaskViewController: UITableViewController, NewTaskViewControllerDelegate {
         }
     }
 }
-
