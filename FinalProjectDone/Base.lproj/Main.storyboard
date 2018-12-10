@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VrB-by-j4Z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="VrB-by-j4Z">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -25,8 +25,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="341" height="73.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sTN-2Z-eVa">
-                                            <rect key="frame" x="57" y="7" width="33.5" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Goal Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sTN-2Z-eVa">
+                                            <rect key="frame" x="57" y="7" width="72.5" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -132,6 +132,10 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Business" translatesAutoresizingMaskIntoConstraints="NO" id="LWp-3r-PaX">
+                                                    <rect key="frame" x="295" y="10" width="26" height="26"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Kpg-7P-sB2" firstAttribute="leading" secondItem="sFd-qn-9tV" secondAttribute="leadingMargin" constant="29" id="C9h-5o-5KB"/>
@@ -160,14 +164,15 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="TFl-k4-VZp">
                             <connections>
-                                <action selector="done:" destination="2IT-Uf-LPB" id="h8K-b7-VsK"/>
+                                <action selector="done:" destination="2IT-Uf-LPB" id="hiK-Ah-7Mm"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="doneButton" destination="TFl-k4-VZp" id="TtB-3J-SMa"/>
-                        <outlet property="iconNameLabel" destination="Kpg-7P-sB2" id="FbI-q8-ksP"/>
-                        <outlet property="textField" destination="vxB-j0-J9A" id="gkz-aJ-1JO"/>
+                        <outlet property="doneBtn" destination="TFl-k4-VZp" id="hV1-WP-JHc"/>
+                        <outlet property="goalTextField" destination="vxB-j0-J9A" id="8p5-Ss-KE1"/>
+                        <outlet property="iconLabel" destination="Kpg-7P-sB2" id="vIw-RT-ejG"/>
+                        <outlet property="imageViewIcon" destination="LWp-3r-PaX" id="Vgg-Vg-ijI"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j2y-m8-t1n" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -416,6 +421,9 @@
             <point key="canvasLocation" x="1933.5999999999999" y="-8.5457271364317844"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Business" width="409.60000610351562" height="409.60000610351562"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="sfR-BE-2sE"/>
         <segue reference="rKO-F6-ElL"/>

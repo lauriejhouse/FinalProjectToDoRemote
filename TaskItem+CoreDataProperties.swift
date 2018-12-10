@@ -1,9 +1,8 @@
 //
 //  TaskItem+CoreDataProperties.swift
-//  FinalProjectDone
+//  
 //
-//  Created by Jackie Norstrom on 9/21/18.
-//  Copyright © 2018 Jackie Norstrom. All rights reserved.
+//  Created by Jackie on 12/4/18.
 //
 //
 

@@ -70,13 +70,12 @@ class TaskViewController: UITableViewController, NewTaskViewControllerDelegate {
     
     
     
-    
+    //Any way to do this without using tags?
     // MARK: - Custom Methods
     
     func configureCheckmark(for cell: UITableViewCell, with task: TaskItem) {
         
         let imageView = cell.viewWithTag(3000) as? UIImageView
-        
         if task.isChecked != true {
             imageView?.image = #imageLiteral(resourceName: "No Icon")
         } else {

@@ -9,6 +9,7 @@
 import UIKit
 import Foundation
 import CoreData
+import CloudKit
 
 protocol NewGoalViewControllerDelegate: class {
     func newGoalViewControllerDidCancel(_ controller: NewGoalViewController)
@@ -20,22 +21,99 @@ class NewGoalViewController: UITableViewController, UITextFieldDelegate, IconPic
     
     // MARK: - Properties
     
-    @IBOutlet weak var doneButton: UIBarButtonItem!
-    @IBOutlet weak var textField: UITextField!
-    @IBOutlet weak var iconImageView: UIImageView!
-    @IBOutlet weak var iconNameLabel: UILabel!
+    //https://github.com/paulw11/Seam3/blob/master/Sources/Classes/NSManagedObject%2BCKRecord.swift - NSManagedObject+CKRecord.swift
+    
+    
+    var recordZone: CKRecordZone!
+    
+    
+  //Going to need custom zone?
+    
+//    let recordZone = CKRecordZone.ID(zoneName: "_defaultZone", ownerName: "_6c6777e3b8e64bf08735b7eddc6cf782")
+//    let ckRecordID = CKRecord.ID(recordName: recordIDString, zoneID: recordZone)
+//    let ckRecord = CKRecord(recordType: myRecordType, recordID: ckRecordID)
+
+    //Old cloudkit stuff before seam3import
+//    let container = CKContainer.default()
+//    var currentRecord: CKRecord?
+//    lazy var publicDB: CKDatabase! = {
+//        let DB = self.container.publicCloudDatabase
+//        return DB
+//    }()
     
     var managedContext: NSManagedObjectContext!
     
+    //why do i need a delegate? what is a delegate
     weak var delegate: NewGoalViewControllerDelegate?
     var goalToEdit: GoalItem?
+    
     
     let icons = ["No Icon", "Sport", "Self", "Business", "Computer", "Fun"]
     var placeholderGoals = ["Learn Programming", "Learn Piano", "Build Rome", "Become Enlightened", "Breathe Underwater", "Turn Back Time", "Run A Marathon", "Read 10 Books", "Quit Job", "Deactivate Facebook"]
     
     
     
+    @IBOutlet weak var doneBtn: UIBarButtonItem!
+    @IBOutlet weak var iconLabel: UILabel!
+    @IBOutlet weak var goalTextField: UITextField!
+    @IBOutlet weak var imageViewIcon: UIImageView!
     
+   
+    // MARK: - BPs
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+//        publicDB?.save(recordZone!,
+//                       completionHandler: {(recordzone, error) in
+//                        if (error != nil) {
+//                            self.notifyUser("Record Zone Error",
+//                                            message: "Failed to create custom record zone.")
+//                        } else {
+//                            print("Saved record zone")
+//                        }
+//        })
+        
+        
+        
+        if let goal = goalToEdit {
+            title = "Edit Goal"
+            goalTextField.text = goal.text
+            doneBtn.isEnabled = true
+            iconLabel.text = goal.iconName
+            imageViewIcon.image = UIImage(named: goal.iconName!)
+        } else {
+            let randomGoals = placeholderGoals.randomItem()
+            goalTextField.placeholder = "\(randomGoals!)..."
+            let random = icons.randomItem()
+            imageViewIcon.image = UIImage(named: random!)
+            iconLabel.text = random
+        }
+        
+        
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        goalTextField.becomeFirstResponder()
+    }
+    
+    
+    //Old CLoudkit
+//    func notifyUser(_ title: String, message: String) -> Void
+//    {
+//        let alert = UIAlertController(title: title,
+//                                      message: message,
+//                                      preferredStyle: .alert)
+//
+//        let cancelAction = UIAlertAction(title: "OK",
+//                                         style: .cancel, handler: nil)
+//
+//        alert.addAction(cancelAction)
+//        self.present(alert, animated: true,
+//                     completion: nil)
+//    }
     
     
     
@@ -45,49 +123,62 @@ class NewGoalViewController: UITableViewController, UITextFieldDelegate, IconPic
         delegate?.newGoalViewControllerDidCancel(self)
     }
     
+    //need to make this save to icloud when pressed
+    //But done button also needs to save locally to the table and do all the things it did before.
+    
     @IBAction func done(_ sender: Any) {
+        
+        //"OLD" default way of saving goals to table. Not using cloudkit, only coredata.
         if let goal = goalToEdit {
-            goal.text = textField.text!
-            goal.iconName = iconNameLabel.text!
+            goal.text = goalTextField.text!
+            goal.iconName = iconLabel.text!
             delegate?.newGoalViewController(self, didFinishEditing: goal)
         } else {
-            let goal = NSEntityDescription.insertNewObject(forEntityName: "GoalItem", into: managedContext) as! GoalItem
-            goal.text = textField.text!
-            goal.iconName = iconNameLabel.text
-            delegate?.newGoalViewController(self, didFinishAdding: goal)
+                        let goal = NSEntityDescription.insertNewObject(forEntityName: "GoalItem", into: managedContext) as! GoalItem
+                        goal.text = goalTextField.text!
+                        goal.iconName = iconLabel.text
+                        delegate?.newGoalViewController(self, didFinishAdding: goal)
         }
         
-    }
-    
-    
-    
-    
-    
-    // MARK: - BPs
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
         
-        if let goal = goalToEdit {
-            title = "Edit Goal"
-            textField.text = goal.text
-            doneButton.isEnabled = true
-            iconNameLabel.text = goal.iconName
-//            iconImageView.image = UIImage(named: goal.iconName!)
-        } else {
-            let randomGoals = placeholderGoals.randomItem()
-            textField.placeholder = "\(randomGoals!)..."
-            let random = icons.randomItem()
-//            iconImageView.image = UIImage(named: random!)
-            iconNameLabel.text = random
-        }
         
-    }
+    //Trying to save with CloudKit. Commenting out to get it to mostly work.
+//        let myRecord = CKRecord(recordType: "Goal",zoneID: (recordZone?.zoneID)!)
+//
+//        myRecord.setObject(goalTextField.text as CKRecordValue?,
+//                           forKey: "goalDescription")
+//
+//
+//        let modifyRecordsOperation = CKModifyRecordsOperation(
+//            recordsToSave: [myRecord],
+//            recordIDsToDelete: nil)
+//        //Depreciated in iOS11
+////        modifyRecordsOperation.timeoutIntervalForRequest = 10
+////        modifyRecordsOperation.timeoutIntervalForResource = 10
+//
+//        modifyRecordsOperation.modifyRecordsCompletionBlock =
+//            { records, recordIDs, error in
+//                if let err = error {
+//                    self.notifyUser("Save Error", message:
+//                        err.localizedDescription)
+//                } else {
+//                    DispatchQueue.main.async {
+//                        self.notifyUser("Success",
+//                                        message: "Record saved successfully")
+//                    }
+//                    self.currentRecord = myRecord
+//                }
+//        }
+//        publicDB?.add(modifyRecordsOperation)
+        
+        
+        
+        
+    }  //this bracket ends the done button function
+
+        
+
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        textField.becomeFirstResponder()
-    }
     
     
     
@@ -120,7 +211,7 @@ class NewGoalViewController: UITableViewController, UITextFieldDelegate, IconPic
         let oldText = textField.text! as NSString
         let newText = oldText.replacingCharacters(in: range, with: string) as NSString
         
-        doneButton.isEnabled = newText.length > 0
+        doneBtn.isEnabled = newText.length > 0
         
         return true
         
@@ -133,8 +224,8 @@ class NewGoalViewController: UITableViewController, UITextFieldDelegate, IconPic
     // MARK: - Icon Picker Delegate
     
     func iconPicker(_ picker: IconPickerViewController, didPick iconName: String) {
-//        iconImageView.image = UIImage(named: iconName)
-        iconNameLabel.text = iconName
+        imageViewIcon.image = UIImage(named: iconName)
+        iconLabel.text = iconName
         navigationController?.popViewController(animated: true)
     }
     

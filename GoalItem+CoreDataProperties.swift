@@ -1,14 +1,16 @@
 //
 //  GoalItem+CoreDataProperties.swift
-//  FinalProjectDone
+//  
 //
-//  Created by Jackie Norstrom on 9/21/18.
-//  Copyright © 2018 Jackie Norstrom. All rights reserved.
+//  Created by Jackie on 12/4/18.
 //
 //
 
 import Foundation
 import CoreData
+
+//https://www.raywenderlich.com/2076-video-tutorial-ios-app-extensions-part-7-today-extensions-core-data
+//https://www.whatmatrix.com/portal/a-guide-to-cloudkit-how-to-sync-user-data-across-ios-devices/
 
 
 extension GoalItem {
@@ -20,6 +22,9 @@ extension GoalItem {
     @NSManaged public var iconName: String?
     @NSManaged public var percentageComplete: Int32
     @NSManaged public var text: String?
+    @NSManaged public var dueDate: NSDate?
+    @NSManaged public var completed: Bool
+    @NSManaged public var completionDate: NSDate?
     @NSManaged public var tasks: NSOrderedSet?
 
 }
