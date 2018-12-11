@@ -180,20 +180,20 @@
 			path = TodayWidget;
 			sourceTree = "<group>";
 		};
-		8CADA28621B71A1D00545F89 /* CoreData */ = {
+		8CADA28621B71A1D00545F89 /* CoreData + CloudKit Manager */ = {
 			isa = PBXGroup;
 			children = (
 				8CADA28721B71A2700545F89 /* CoreDataStack.swift */,
 				8CAD825521BEE0F7008AE224 /* CoreDataManager.swift */,
 				8C1C41C121C0152D0099AF6A /* CloudKitManager.swift */,
 			);
-			path = CoreData;
+			path = "CoreData + CloudKit Manager";
 			sourceTree = "<group>";
 		};
 		8CD0C40B215522A300967947 = {
 			isa = PBXGroup;
 			children = (
-				8CADA28621B71A1D00545F89 /* CoreData */,
+				8CADA28621B71A1D00545F89 /* CoreData + CloudKit Manager */,
 				8CD0C450215543A200967947 /* GoalItem+CoreDataClass.swift */,
 				8CD0C451215543A200967947 /* GoalItem+CoreDataProperties.swift */,
 				8CD0C452215543A200967947 /* TaskItem+CoreDataClass.swift */,

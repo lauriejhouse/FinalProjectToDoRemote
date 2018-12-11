@@ -27,19 +27,18 @@ struct CoreDataManager {
     }
     
     func addGoal(with name: String) -> GoalItem? {
-        
-        let entity = NSEntityDescription.entity(forEntityName: "Goal", in: managedContext)!
+        let entity = NSEntityDescription.entity(forEntityName: "GoalItem", in: managedContext)!
         let goal = NSManagedObject(entity: entity, insertInto: managedContext) as! GoalItem
         
         //or goal.name = name
-        goal.setValue(name, forKeyPath: "name")
+        goal.setValue(name, forKeyPath: "text")
         
         return self.save() ? goal : nil
     }
     
     func addTask(to goal: GoalItem, with name: String) -> TaskItem? {
         
-        let entity = NSEntityDescription.entity(forEntityName: "Task", in: managedContext)!
+        let entity = NSEntityDescription.entity(forEntityName: "TaskItem", in: managedContext)!
         let task = NSManagedObject(entity: entity, insertInto: managedContext) as! TaskItem
         task.setValue(name, forKeyPath: "name")
         
@@ -50,7 +49,7 @@ struct CoreDataManager {
     
     func getAllGoals() -> [GoalItem]? {
         
-        let goalsFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Goal")
+        let goalsFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "GoalItem")
         
         do {
             let goals = try managedContext.fetch(goalsFetch) as! [GoalItem]

@@ -115,7 +115,9 @@ class NewGoalViewController: UITableViewController, UITextFieldDelegate, IconPic
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        goalTextField.becomeFirstResponder()
+//        goalTextField.becomeFirstResponder()
+        self.goals = CoreDataManager.shared.getAllGoals() ?? []
+
     }
     
     
@@ -158,6 +160,29 @@ class NewGoalViewController: UITableViewController, UITextFieldDelegate, IconPic
                         goal.iconName = iconLabel.text
                         delegate?.newGoalViewController(self, didFinishAdding: goal)
         }
+        
+        //change done button to alert action?
+        let alertController = UIAlertController(title: "Add Goal", message: nil , preferredStyle: .actionSheet)
+
+        let saveAction = UIAlertAction(title: "Save", style: .default, handler: { alert in
+            let field = self.goalTextField
+            guard let name = field?.text else { return }
+
+            //original
+//            let field = alertController.textFields![0] as UITextField
+//            guard let name = field.text else { return }
+            
+            guard let _ = CoreDataManager.shared.addGoal(with: name) else { return }
+            self.goals = CoreDataManager.shared.getAllGoals() ?? []
+            self.tableView.reloadData()
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: { action in })
+        
+        alertController.addAction(saveAction)
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true, completion: nil)
         
         
         
