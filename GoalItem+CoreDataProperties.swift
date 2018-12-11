@@ -2,7 +2,7 @@
 //  GoalItem+CoreDataProperties.swift
 //  
 //
-//  Created by Jackie on 12/4/18.
+//  Created by Jackie on 12/11/18.
 //
 //
 
@@ -12,13 +12,13 @@ import CoreData
 //https://www.raywenderlich.com/2076-video-tutorial-ios-app-extensions-part-7-today-extensions-core-data
 //https://www.whatmatrix.com/portal/a-guide-to-cloudkit-how-to-sync-user-data-across-ios-devices/
 
-
 extension GoalItem {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<GoalItem> {
         return NSFetchRequest<GoalItem>(entityName: "GoalItem")
     }
 
+    @NSManaged public var completed: Bool
     @NSManaged public var iconName: String?
     @NSManaged public var percentageComplete: Int32
     @NSManaged public var text: String?

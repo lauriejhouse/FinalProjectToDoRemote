@@ -1,0 +1,20 @@
+PODS:
+  - Seam3 (1.4.8)
+  - TableViewDragger (1.3.0)
+
+DEPENDENCIES:
+  - Seam3
+  - TableViewDragger
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Seam3
+    - TableViewDragger
+
+SPEC CHECKSUMS:
+  Seam3: ef5b2c0ee2b64b498c84298b3c087e044ff3c21b
+  TableViewDragger: 5933729a18d1606e16388d72f6d4fe5f3a0bcaf4
+
+PODFILE CHECKSUM: f5f945ec4caa03c1c92d99ed659f4bd0793bb275
+
+COCOAPODS: 1.5.3
