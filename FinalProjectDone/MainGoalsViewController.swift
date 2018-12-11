@@ -342,24 +342,57 @@ class MainGoalsViewController: UITableViewController, NewGoalViewControllerDeleg
     
     
     //These may already be in the coredata manager file
-    func save() {
+    //Crashes here because I already have it running somewhere else? Get all goals?
+    func save() -> Bool {
+        
+        //orignal save method
+//        do {
+//            try managedContext.save()
+//        } catch let error as NSError {
+//            print(error)
+//        }
+        
+        //commented out because i got thread 1 signal sgabrt. 
+//        let _ =  CoreDataManager.shared.save()
         do {
             try managedContext.save()
-        } catch let error as NSError {
-            print(error)
+            return true
+        } catch {
+            print("Could not save. \(error.localizedDescription)")
+            return false
+        }
+
+    }
+    
+    
+// Old Fetch
+//    func fetch() {
+////        let request = NSFetchRequest<GoalItem>(entityName: "GoalItem")
+////
+////        do {
+////            let results = try managedContext.fetch(request)
+////            goalItems?.append(contentsOf: results)
+////        } catch let error as NSError {
+////            print(error)
+////        }
+//
+//
+//    }
+    
+    
+    func fetch() -> [GoalItem]? {
+    
+    let goalsFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "GoalItem")
+    
+    do {
+    let goals = try managedContext.fetch(goalsFetch) as! [GoalItem]
+    return goals
+    } catch {
+    print("Failed to fetch goals: \(error)")
+    return nil
         }
     }
 
-    func fetch() {
-        let request = NSFetchRequest<GoalItem>(entityName: "GoalItem")
-
-        do {
-            let results = try managedContext.fetch(request)
-            goalItems?.append(contentsOf: results)
-        } catch let error as NSError {
-            print(error)
-        }
-    }
     
     
     func fetchCheckedItems(with goal: GoalItem) {
