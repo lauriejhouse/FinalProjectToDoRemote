@@ -22,9 +22,6 @@ extension GoalItem {
     @NSManaged public var iconName: String?
     @NSManaged public var percentageComplete: Int32
     @NSManaged public var text: String?
-    @NSManaged public var dueDate: NSDate?
-    @NSManaged public var completed: Bool
-    @NSManaged public var completionDate: NSDate?
     @NSManaged public var tasks: NSOrderedSet?
 
 }
