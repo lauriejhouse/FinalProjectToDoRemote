@@ -39,7 +39,7 @@ import UIKit
 import Foundation
 import CoreData
 import TableViewDragger
-import CloudKit
+import Seam3
 
 
 class MainGoalsViewController: UITableViewController, NewGoalViewControllerDelegate {
@@ -48,19 +48,22 @@ class MainGoalsViewController: UITableViewController, NewGoalViewControllerDeleg
     var dragger: TableViewDragger!
 
 
-    //For CloudKit - Don't need with new CCPod
-    let container = CKContainer.default()
-    let record = CKRecord(recordType: "Goal")
-    lazy var publicDB: CKDatabase! = {
-        let DB = self.container.publicCloudDatabase
-        return DB
-    }()
+    
+//    //For CloudKit - Don't need with new CCPod
+//    let container = CKContainer.default()
+//    let record = CKRecord(recordType: "Goal")
+//    lazy var publicDB: CKDatabase! = {
+//        let DB = self.container.publicCloudDatabase
+//        return DB
+//    }()
 
     
     // MARK: - Properties
     
     let rowHeight: CGFloat = 75
-    var managedContext: NSManagedObjectContext!
+    lazy var managedContext = {
+        return CoreDataManager.shared.managedContext!
+    }()
     var goalItems: [GoalItem]? = []
     var checkedItems: Int?
     
@@ -98,29 +101,29 @@ class MainGoalsViewController: UITableViewController, NewGoalViewControllerDeleg
         dragger.opacityForShadowOfCell = 1
         
         //Old test way of doing cloudkit
-        let predicate = NSPredicate(format: "Task = %@", "Task to complete")
-        let query = CKQuery(recordType: "Goal", predicate: predicate)
-        
-        publicDB.perform(query, inZoneWith: nil) { [unowned self] results, error in
-            if let error = error {
-                DispatchQueue.main.async {
-                    print("Cloud Query Error - Fetch Establishments: \(error)")
-                }
-                return
-            }
-            
-            self.goalItems?.removeAll(keepingCapacity: true)
-            results?.forEach({ (record: CKRecord) in
-                
-                let goalItem = GoalItem.goalItemFromRecord(record: record, managedContext: self.managedContext)
-                self.goalItems?.append (goalItem)
-                print(record)
-            })
-            DispatchQueue.main.async {
-//                self.delegate?.modelUpdated()
-                self.tableView.reloadData()
-
-            }}
+//        let predicate = NSPredicate(format: "Task = %@", "Task to complete")
+//        let query = CKQuery(recordType: "Goal", predicate: predicate)
+//        
+//        publicDB.perform(query, inZoneWith: nil) { [unowned self] results, error in
+//            if let error = error {
+//                DispatchQueue.main.async {
+//                    print("Cloud Query Error - Fetch Establishments: \(error)")
+//                }
+//                return
+//            }
+//            
+//            self.goalItems?.removeAll(keepingCapacity: true)
+//            results?.forEach({ (record: CKRecord) in
+//                
+//                let goalItem = GoalItem.goalItemFromRecord(record: record, managedContext: self.managedContext)
+//                self.goalItems?.append (goalItem)
+//                print(record)
+//            })
+//            DispatchQueue.main.async {
+////                self.delegate?.modelUpdated()
+//                self.tableView.reloadData()
+//
+//            }}
         //CloudKit stuff ends here. Possibly keep reloadData for tableView
         
         
@@ -338,7 +341,7 @@ class MainGoalsViewController: UITableViewController, NewGoalViewControllerDeleg
     }
     
     
-    
+    //These may already be in the coredata manager file
     func save() {
         do {
             try managedContext.save()
@@ -346,10 +349,10 @@ class MainGoalsViewController: UITableViewController, NewGoalViewControllerDeleg
             print(error)
         }
     }
-    
+
     func fetch() {
         let request = NSFetchRequest<GoalItem>(entityName: "GoalItem")
-        
+
         do {
             let results = try managedContext.fetch(request)
             goalItems?.append(contentsOf: results)

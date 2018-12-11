@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		09801D009AD84B881C70D8CD /* Pods_FinalProjectDoneTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F31DD78436BE3E264477CBE /* Pods_FinalProjectDoneTests.framework */; };
 		5D20F72A7AC6BE12E2FA3E14 /* Pods_TodayWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BBDE69AE5459CB3B6602B85 /* Pods_TodayWidget.framework */; };
+		8C1C41C221C0152D0099AF6A /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1C41C121C0152D0099AF6A /* CloudKitManager.swift */; };
 		8C784F8D21B034F700F08C32 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C784F8C21B034F700F08C32 /* CloudKit.framework */; };
 		8C784F9721B6BE4D00F08C32 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C784F9621B6BE4D00F08C32 /* NotificationCenter.framework */; };
 		8C784F9A21B6BE4D00F08C32 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C784F9921B6BE4D00F08C32 /* TodayViewController.swift */; };
@@ -89,6 +90,7 @@
 		667A0EA9483F3780F12098A4 /* Pods_FinalProjectDone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinalProjectDone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C8224035C5F44B8EE40D026 /* Pods-FinalProjectDone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProjectDone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FinalProjectDone/Pods-FinalProjectDone.debug.xcconfig"; sourceTree = "<group>"; };
 		8BBDE69AE5459CB3B6602B85 /* Pods_TodayWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodayWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C1C41C121C0152D0099AF6A /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
 		8C784F8B21B034F400F08C32 /* FinalProjectDone.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FinalProjectDone.entitlements; sourceTree = "<group>"; };
 		8C784F8C21B034F700F08C32 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		8C784F9521B6BE4D00F08C32 /* TodayWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TodayWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -183,6 +185,7 @@
 			children = (
 				8CADA28721B71A2700545F89 /* CoreDataStack.swift */,
 				8CAD825521BEE0F7008AE224 /* CoreDataManager.swift */,
+				8C1C41C121C0152D0099AF6A /* CloudKitManager.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -589,6 +592,7 @@
 				8CD0C44D21553C1400967947 /* NewTaskViewController.swift in Sources */,
 				8CD0C44B2155342A00967947 /* NewGoalViewController.swift in Sources */,
 				8CD0C456215543A200967947 /* TaskItem+CoreDataClass.swift in Sources */,
+				8C1C41C221C0152D0099AF6A /* CloudKitManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 import CoreData
-import CloudKit
+import Seam3
 
 protocol NewGoalViewControllerDelegate: class {
     func newGoalViewControllerDidCancel(_ controller: NewGoalViewController)
@@ -24,7 +24,7 @@ class NewGoalViewController: UITableViewController, UITextFieldDelegate, IconPic
     //https://github.com/paulw11/Seam3/blob/master/Sources/Classes/NSManagedObject%2BCKRecord.swift - NSManagedObject+CKRecord.swift
     
     
-    var recordZone: CKRecordZone!
+//    var recordZone: CKRecordZone!
     
     
   //Going to need custom zone?
@@ -41,12 +41,16 @@ class NewGoalViewController: UITableViewController, UITextFieldDelegate, IconPic
 //        return DB
 //    }()
     
-    var managedContext: NSManagedObjectContext!
+    lazy var managedContext = {
+        return CoreDataManager.shared.managedContext!
+    }()
+    
     
     //why do i need a delegate? what is a delegate
     weak var delegate: NewGoalViewControllerDelegate?
     var goalToEdit: GoalItem?
-    
+    var goals = [GoalItem]()
+
     
     let icons = ["No Icon", "Sport", "Self", "Business", "Computer", "Fun"]
     var placeholderGoals = ["Learn Programming", "Learn Piano", "Build Rome", "Become Enlightened", "Breathe Underwater", "Turn Back Time", "Run A Marathon", "Read 10 Books", "Quit Job", "Deactivate Facebook"]
@@ -74,8 +78,23 @@ class NewGoalViewController: UITableViewController, UITextFieldDelegate, IconPic
 //                        }
 //        })
         
+        CloudKitManager.shared.triggerSyncWithCloudKit()
+        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: SMStoreNotification.SyncDidFinish), object: nil, queue: nil) { notification in
+            
+            if notification.userInfo != nil {
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.smStore?.triggerSync(complete: true)
+            }
+            
+            self.managedContext.refreshAllObjects()
+            
+            DispatchQueue.main.async {
+                self.goals = CoreDataManager.shared.getAllGoals() ?? []
+                self.tableView.reloadData()
+            }
+        }
         
-        
+        //Think I still need to keep this here for editing/listing goals.
         if let goal = goalToEdit {
             title = "Edit Goal"
             goalTextField.text = goal.text
