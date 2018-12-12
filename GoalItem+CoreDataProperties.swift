@@ -2,15 +2,13 @@
 //  GoalItem+CoreDataProperties.swift
 //  
 //
-//  Created by Jackie on 12/11/18.
+//  Created by Jackie Norstrom on 12/12/18.
 //
 //
 
 import Foundation
 import CoreData
 
-//https://www.raywenderlich.com/2076-video-tutorial-ios-app-extensions-part-7-today-extensions-core-data
-//https://www.whatmatrix.com/portal/a-guide-to-cloudkit-how-to-sync-user-data-across-ios-devices/
 
 extension GoalItem {
 
@@ -22,30 +20,12 @@ extension GoalItem {
     @NSManaged public var iconName: String?
     @NSManaged public var percentageComplete: Int32
     @NSManaged public var text: String?
-    @NSManaged public var tasks: NSOrderedSet?
+    @NSManaged public var tasks: NSSet?
 
 }
 
 // MARK: Generated accessors for tasks
 extension GoalItem {
-
-    @objc(insertObject:inTasksAtIndex:)
-    @NSManaged public func insertIntoTasks(_ value: TaskItem, at idx: Int)
-
-    @objc(removeObjectFromTasksAtIndex:)
-    @NSManaged public func removeFromTasks(at idx: Int)
-
-    @objc(insertTasks:atIndexes:)
-    @NSManaged public func insertIntoTasks(_ values: [TaskItem], at indexes: NSIndexSet)
-
-    @objc(removeTasksAtIndexes:)
-    @NSManaged public func removeFromTasks(at indexes: NSIndexSet)
-
-    @objc(replaceObjectInTasksAtIndex:withObject:)
-    @NSManaged public func replaceTasks(at idx: Int, with value: TaskItem)
-
-    @objc(replaceTasksAtIndexes:withTasks:)
-    @NSManaged public func replaceTasks(at indexes: NSIndexSet, with values: [TaskItem])
 
     @objc(addTasksObject:)
     @NSManaged public func addToTasks(_ value: TaskItem)
@@ -54,9 +34,9 @@ extension GoalItem {
     @NSManaged public func removeFromTasks(_ value: TaskItem)
 
     @objc(addTasks:)
-    @NSManaged public func addToTasks(_ values: NSOrderedSet)
+    @NSManaged public func addToTasks(_ values: NSSet)
 
     @objc(removeTasks:)
-    @NSManaged public func removeFromTasks(_ values: NSOrderedSet)
+    @NSManaged public func removeFromTasks(_ values: NSSet)
 
 }

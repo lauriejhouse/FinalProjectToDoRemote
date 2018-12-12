@@ -48,6 +48,7 @@ class TaskViewController: UITableViewController, NewTaskViewControllerDelegate {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) {
+//            if let task = goalItem?.tasks?[indexPath.row] as? TaskItem {
             if let task = goalItem?.tasks?[indexPath.row] as? TaskItem {
                 task.toggleChecked()
                 save()
@@ -110,13 +111,13 @@ class TaskViewController: UITableViewController, NewTaskViewControllerDelegate {
     }
     
     func newTaskViewController(_ controller: NewTaskViewController, didFinishAdding task: TaskItem) {
-        if let goalItem = goalItem, let tasks = goalItem.tasks?.mutableCopy() as? NSMutableOrderedSet {
+        if let goalItem = goalItem, let tasks = goalItem.tasks?.mutableCopy() as? NSMutableSet {
             
             let newRowIndex = tasks.count
             let indexPath = IndexPath(row: newRowIndex, section: 0)
             tasks.add(task)
+//            goalItem.tasks = tasks
             goalItem.tasks = tasks
-            
             tableView.insertRows(at: [indexPath], with: .automatic)
             save()
         }

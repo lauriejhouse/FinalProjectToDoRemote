@@ -13,7 +13,15 @@ import CoreData
 public class GoalItem: NSManagedObject {
     deinit {
         print("DEINITIALISED")
+    
 }
+    
+    subscript(index: String) -> GoalItem? {
+        guard let task = tasks?[index] else {
+            return nil
+        }
+        return task
+    }
     
 //    class func goalItemFromRecord (record: CKRecord, managedContext: NSManagedObjectContext) -> GoalItem {
 //        let goal = NSEntityDescription.insertNewObject(forEntityName: "GoalItem", into: managedContext) as! GoalItem

@@ -2,7 +2,7 @@
 //  TaskItem+CoreDataProperties.swift
 //  
 //
-//  Created by Jackie on 12/4/18.
+//  Created by Jackie Norstrom on 12/12/18.
 //
 //
 

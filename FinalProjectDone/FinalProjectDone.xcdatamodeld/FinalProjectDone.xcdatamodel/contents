@@ -5,7 +5,7 @@
         <attribute name="iconName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="percentageComplete" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="TaskItem" inverseName="goal" inverseEntity="TaskItem" syncable="YES"/>
+        <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TaskItem" inverseName="goal" inverseEntity="TaskItem" syncable="YES"/>
     </entity>
     <entity name="TaskItem" representedClassName="TaskItem" syncable="YES">
         <attribute name="isChecked" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
