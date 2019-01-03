@@ -69,7 +69,6 @@ class MainGoalsViewController: UITableViewController, NewGoalViewControllerDeleg
     
     
     
-    
 //    @IBOutlet weak var taskButton: UIButton!
     
     //save record to database: record.setobjectforkey("fieldname")

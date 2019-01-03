@@ -18,12 +18,12 @@ public class TaskItem: NSManagedObject {
         isChecked = !isChecked
     }
 
-    subscript(index: String) -> TaskItem? {
-        guard let task = text?[index] else {
-            return nil
-        }
-        return task
-    }
+//    subscript(index: String) -> TaskItem? {
+//        guard let task = text?[index] else {
+//            return nil
+//        }
+//        return task
+//    }
     
     
 }
