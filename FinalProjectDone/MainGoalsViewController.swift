@@ -24,6 +24,8 @@
  Achievement 3
  * The app should use Core Data to persist the tasks users enter so that they will be saved when the app is closed and displayed again in the next session.
 
+ 
+ Removed pods.
  */
 
 import UIKit
