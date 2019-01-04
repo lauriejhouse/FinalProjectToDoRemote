@@ -10,52 +10,30 @@
 
 //Things left to do:
 /*
- Use CloudKit/Firebase to sync tasts across devices. iCloud maybe easiest that way I don't have to rewrite the CoreData. Or use
- //https://github.com/couchbase/couchbase-lite-ios to possibly use Firebase and not have to rewrite the code. - Most Difficult
  
+ Achievement 1
+ * The app should contain a list of tasks, which can be implemented using either a table view or a collection view. Users should be able to move and delete items within the list.
+ *
+ * The app should be available on a repository on GitHub, and you should use version control regularly when working on the app.
  
- Today Widget - Most difficult
- Custom animations 2-4 of them
- Custom view controller transitions to animate - I think I Have that with present modually
- Localize in 1 or 2 langauges - easy
- Testing/Debugging -easyish
- Analytics to track tasks
- Monetization - adds on app through google. - pretty easy
- Document and press kit. - easy
+ Achievement 2
+ * The app should use assets catalogs to show images and icons in the app. Optionally, you could show different images for iPhones and iPads.
+ * The app UI should be fully adaptive to the screen size and device type that it's running on.
+ * The app should use a split view to view the list of tasks and task details side-by-side when running on an iPad.
  
- 
- I have one cocoaPod already, that moves around the tasks. Does that also count as an animation?
- 
- 
- 
- For CoreData + CloudKit Need CoreData + CloudKit Manager Swfit files.
- 
- 
- 
- Easier to add an alert style to make it easier to use?
+ Achievement 3
+ * The app should use Core Data to persist the tasks users enter so that they will be saved when the app is closed and displayed again in the next session.
+
  */
 
 import UIKit
 import Foundation
 import CoreData
-import TableViewDragger
-import Seam3
 
 
 class MainGoalsViewController: UITableViewController, NewGoalViewControllerDelegate {
     
-//For TableViewDragger CocoaPod
-    var dragger: TableViewDragger!
 
-
-    
-//    //For CloudKit - Don't need with new CCPod
-//    let container = CKContainer.default()
-//    let record = CKRecord(recordType: "Goal")
-//    lazy var publicDB: CKDatabase! = {
-//        let DB = self.container.publicCloudDatabase
-//        return DB
-//    }()
 
     
     // MARK: - Properties
@@ -64,23 +42,11 @@ class MainGoalsViewController: UITableViewController, NewGoalViewControllerDeleg
     lazy var managedContext = {
         return CoreDataManager.shared.managedContext!
     }()
+    
     var goalItems: [GoalItem]? = []
     var checkedItems: Int?
     
-    
-    
-//    @IBOutlet weak var taskButton: UIButton!
-    
-    //save record to database: record.setobjectforkey("fieldname")
-    //key is always field name from cloudKitDB
-//CKModififyreocrdsoperation - class name. pass in records that you wanna save as an array.
-    //completion block.
-    //publicdatabase.saverecord - for one record at a time
-    //CKModifyRecordsOperation - save batch records.
 
-    //frankie@fbombmedia.com
-    
-    
 
     // MARK: - BPs
     
@@ -91,43 +57,9 @@ class MainGoalsViewController: UITableViewController, NewGoalViewControllerDeleg
         tableView.rowHeight = rowHeight
         fetch()
         selectNewGoal()
+     
         
-        //TableView Dragger CCPod
-        dragger = TableViewDragger(tableView: tableView)
-        dragger.dataSource = self
-        dragger.delegate = self
-        dragger.alphaForCell = 0.7
-        dragger.opacityForShadowOfCell = 1
-        
-        //Old test way of doing cloudkit
-//        let predicate = NSPredicate(format: "Task = %@", "Task to complete")
-//        let query = CKQuery(recordType: "Goal", predicate: predicate)
-//        
-//        publicDB.perform(query, inZoneWith: nil) { [unowned self] results, error in
-//            if let error = error {
-//                DispatchQueue.main.async {
-//                    print("Cloud Query Error - Fetch Establishments: \(error)")
-//                }
-//                return
-//            }
-//            
-//            self.goalItems?.removeAll(keepingCapacity: true)
-//            results?.forEach({ (record: CKRecord) in
-//                
-//                let goalItem = GoalItem.goalItemFromRecord(record: record, managedContext: self.managedContext)
-//                self.goalItems?.append (goalItem)
-//                print(record)
-//            })
-//            DispatchQueue.main.async {
-////                self.delegate?.modelUpdated()
-//                self.tableView.reloadData()
-//
-//            }}
-        //CloudKit stuff ends here. Possibly keep reloadData for tableView
-        
-        
-        
-        
+       
     }
     
     
@@ -178,19 +110,19 @@ class MainGoalsViewController: UITableViewController, NewGoalViewControllerDeleg
     
     
     
-    //To move goal items. Being replaced by cocoapod.
+    //To move goal items. Being replaced by cocoapod. - not in the mid checkpoint file
     
-//    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-//        let movedObject = self.goalItems?[sourceIndexPath.row]
-//        goalItems?.remove(at: sourceIndexPath.row)
-//        goalItems?.insert(movedObject!, at: destinationIndexPath.row)
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let movedObject = self.goalItems?[sourceIndexPath.row]
+        goalItems?.remove(at: sourceIndexPath.row)
+        goalItems?.insert(movedObject!, at: destinationIndexPath.row)
 //        do {
 //            try self.managedContext.save()
 //        } catch {
 //            print("Rows could not be saved")
 //        }
-//
-//    }
+
+    }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete  {
