@@ -16,12 +16,12 @@ public class GoalItem: NSManagedObject {
     
 }
     
-    subscript(index: String) -> GoalItem? {
-        guard let task = tasks?[index] else {
-            return nil
-        }
-        return task
-    }
+//    subscript(index: String) -> GoalItem? {
+//        guard let task = tasks?[index] else {
+//            return nil
+//        }
+//        return task
+//    }
     
 //    class func goalItemFromRecord (record: CKRecord, managedContext: NSManagedObjectContext) -> GoalItem {
 //        let goal = NSEntityDescription.insertNewObject(forEntityName: "GoalItem", into: managedContext) as! GoalItem
